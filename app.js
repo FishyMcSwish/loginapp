@@ -13,8 +13,9 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/loginapp');
 var db = mongoose.connection;
 
-var routes = require('./routes/index');
+var routes = require('./routes');
 var users = require('./routes/users');
+var dashboard = require('./routes/dashboard');
 
 //init app
 var app = express();
@@ -73,6 +74,7 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/dashboard', dashboard);
 
 //set port
 app.set('port', (process.env.PORT || 3000));
